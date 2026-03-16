@@ -2,7 +2,7 @@
 
 Sitio web oficial de Codesign Games.
 
-Incluye información y páginas de mis juegos:
+Incluye información y páginas de nuestros juegos:
 - Masked Miner
 - Defensores de la Patria
 
