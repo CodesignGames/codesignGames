@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cavern Scape | Codesign Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="dark">
+
+<div class="game-content">
+
+    <!-- MODAL CAPTURAS -->
+<div id="imageModal" class="image-modal">
+  <div class="image-modal-content">
+    <span class="image-close">&times;</span>
+    <img id="modalImage" src="" alt="Captura ampliada">
+  </div>
+</div>
+
+<!-- MODAL VIDEO -->
+<div id="videoModal" class="video-modal">
+  <div class="video-modal-content">
+    <span class="video-close" onclick="closeVideoModal()">x</span>
+    <iframe
+      id="modalVideo"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<!-- PARTICULAS -->
+<canvas id="particles"></canvas>
+
+<!-- ===============================
+     PORTADA DEL JUEGO
+================================ -->
+<section class="game-hero">
+  <img src="../img/cavernScape.png" alt="CavernScape">
+  <div class="game-hero-overlay"></div>
+
+  <div class="game-hero-content">
+    <h1>Cavern Scape</h1>
+    <p>Juego de plataforma 2D</p>
+  </div>
+</section>
+
+<!-- ===============================
+     DESCRIPCIÓN + TRAILER
+================================ -->
+<section class="container game-section">
+  <div class="row align-items-center g-5">
+
+    <div class="col-lg-6">
+      <h2>Sobre el juego</h2>
+        <p>
+            <strong>CavernScape</strong> es un videojuego de plataformas 2D de estilo clásico.
+        </p>
+        <p>
+            El jugador avanza a través de distintos niveles enfrentando enemigos,
+            saltando plataformas y disparando para despejar el camino.
+            El objetivo es llegar al final de cada nivel para continuar al siguiente
+            hasta completar el juego.
+        </p>
+        <p>
+            Se trata de un proyecto simple y directo, enfocado en la jugabilidad básica:
+            moverse, saltar y disparar, incorporando plataformas móviles y distintos
+            tipos de enemigos.
+        </p>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="game-trailer youtube-thumb" onclick="openVideoModal()">
+        <img
+        src="https://img.youtube.com/vi/E_ElACzuDvw/hqdefault.jpg"
+        alt="Ver trailer">
+        <span class="play-btn">▶</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===============================
+     CARACTERÍSTICAS
+================================ -->
+<section class="container game-section">
+  <h2 class="text-center mb-5">Características</h2>
+
+  <div class="game-features">
+    <div class="game-feature">
+      <span>🕹️</span>
+      Plataformas 2D de estilo clásico
+    </div>
+
+    <div class="game-feature">
+      <span>🔫</span>
+      Disparo para derrotar enemigos
+    </div>
+
+    <div class="game-feature">
+      <span>⬆️</span>
+      Movimiento lateral y salto
+    </div>
+
+    <div class="game-feature">
+      <span>🧱</span>
+      Plataformas móviles
+    </div>
+
+    <div class="game-feature">
+      <span>👾</span>
+      3 tipos diferentes de enemigos
+    </div>
+
+    <div class="game-feature">
+      <span>🗺️</span>
+      2 niveles jugables
+    </div>
+
+    <div class="game-feature">
+      <span>🎯</span>
+      Objetivo claro: llegar al final de cada nivel
+    </div>
+
+  </div>
+</section>
+
+<!-- ===============================
+     PERSONAJES Y ENEMIGOS
+================================ -->
+<section class="container game-section">
+
+  <!-- PERSONAJES -->
+  <h2 class="text-center mb-4">Personaje</h2>
+
+  <div class="game-characters mb-5">
+    <div class="character-card"
+     onclick="openCharacterModal(this)"
+     data-name="Explorador"
+     data-img="../img/playerCavern.png"
+     data-desc="Explorador que debe atravesar cavernas peligrosas,
+    enfrentando enemigos y superando obstáculos para llegar al final del nivel.">
+    <div class="character-image">
+      <img src="../img/playerCavern.png" alt="Explorador">
+    </div>
+
+      <h4>Explorador</h4>
+    </div>
+  </div>
+
+  <!-- Enemigos -->
+  <h2 class="text-center mb-4">Enemigos</h2>
+
+  <div class="game-characters mb-5">
+    <div class="character-card"
+      onclick="openCharacterModal(this)"
+      data-name="Skeleton"
+      data-img="../img/skeleton.png"
+      data-desc="Enemigo básico, es eliminado con 2 tiros.">
+      <div class="character-image">
+        <img src="../img/skeleton.png" alt="Skeleton">
+      </div>
+      <h4>Skeleton</h4>
+    </div>
+
+    <div class="character-card"
+      onclick="openCharacterModal(this)"
+      data-name="Slime"
+      data-img="../img/slime.png"
+      data-desc="Enemigo medio, es eliminado con 3 tiros.">
+      <div class="character-image">
+        <img src="../img/slime.png" alt="Slime">
+      </div>
+      <h4>Slime</h4>
+    </div>
+
+    <div class="character-card"
+      onclick="openCharacterModal(this)"
+      data-name="Ghost"
+      data-img="../img/ghost.png"
+      data-desc="Enemigo duro, es eliminado con 4 tiros.">
+      <div class="character-image">
+        <img src="../img/ghost.png" alt="Ghost">
+      </div>
+      <h4>Ghost</h4>
+    </div>
+  </div>
+
+
+<!-- ===============================
+     CAPTURAS
+================================ -->
+<section class="container game-section">
+  <h2 class="text-center mb-5">Capturas</h2>
+
+  <div class="row g-3">
+    <div class="col-md-4">
+      <img src="../img/cavernCaptura1.png"
+      class="game-screen"
+      alt="Captura 1"
+      onclick="openImageModal(this)">
+    </div>
+    <div class="col-md-4">
+      <img src="../img/cavernCaptura2.png"
+      class="game-screen"
+      alt="Captura 1"
+      onclick="openImageModal(this)">
+    </div>
+    <div class="col-md-4">
+      <img src="../img/cavernCaptura3.png"
+      class="game-screen"
+      alt="Captura 1"
+      onclick="openImageModal(this)">
+    </div>
+    <div class="col-md-4">
+      <img src="../img/cavernCaptura4.png"
+      class="game-screen"
+      alt="Captura 1"
+      onclick="openImageModal(this)">
+    </div>
+  </div>
+</section>
+
+<!-- ===============================
+     ESTADO DEL PROYECTO
+================================ -->
+<section class="container game-section text-center">
+  <h2 class="mb-3">Estado del proyecto</h2>
+  <p>🛠️ publicado — futuras actualizaciones</p>
+</section>
+
+<!-- ===============================
+     CALL TO ACTION
+================================ -->
+<section class="container game-section text-center">
+  <a href="#"
+     class="btn btn-outline-info btn-lg itch-btn"
+     target="_blank"
+     rel="noopener noreferrer">
+    ▶️ Ver en itch.io
+  </a>
+</section>
+
+<!-- ===============================
+     VOLVER
+================================ -->
+<a href="../index.html"
+   class="btn btn-outline-info btn-lg itch-btn d-block mx-auto mb-5"
+   style="max-width:220px">
+  ← Volver al inicio
+</a>
+
+<!-- ===============================
+     MODAL PERSONAJE / ENEMIGO
+================================ -->
+<div id="characterModal" class="character-modal">
+  <div class="character-modal-content">
+    <span class="character-close">&times;</span>
+
+    <img id="characterImage" src="" alt="">
+    <h3 id="characterName"></h3>
+    <p id="characterDescription"></p>
+  </div>
+</div>
+
+</div>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer class="game-footer">
+  <div class="game-footer-content">
+    <p>2026 Codesign Games</p>
+  </div>
+</footer>
+
+<script src="../effects.js"></script>
+</body>
+</html>

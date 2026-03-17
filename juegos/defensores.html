@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Defensores de la Patria | Codesign Games</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Estilos globales -->
+  <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="dark">
+
+<div class="game-content">
+
+  <!-- Modal capturas -->
+  <div id="imageModal" class="image-modal">
+    <div class="image-modal-content">
+      <span class="image-close">&times;</span>
+      <img id="modalImage" src="" alt="Captura ampliada">
+    </div>
+  </div>
+
+  <!-- Modal video -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+      <span class="video-close" onclick="closeVideoModal()">x</span>
+      <iframe
+        id="modalVideo"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </div>
+
+  <!-- Particulas -->
+  <canvas id="particles"></canvas>
+
+  <!-- Portada del juego -->
+  <section class="game-hero">
+    <img src="../img/Def.png" alt="Defensores de la Patria">
+    <div class="game-hero-overlay"></div>
+
+    <div class="game-hero-content">
+      <h1>Defensores de la Patria</h1>
+      <p>Un beat ’em up 2D ambientado en las Invasiones Inglesas</p>
+    </div>
+  </section>
+
+  <!-- Descripción + trailer -->
+  <section class="container game-section">
+    <div class="row align-items-center g-5">
+
+      <div class="col-lg-6">
+        <h2>Sobre el juego</h2>
+        <p>
+          Durante las Invasiones Inglesas, Buenos Aires fue escenario de una
+          resistencia protagonizada por civiles, milicias y héroes anónimos.
+        </p>
+        <p>
+          <strong>Defensores de la Patria</strong> es un videojuego
+          <em>beat ’em up</em> 2D donde el jugador recorre las calles de la ciudad
+          enfrentando tropas invasoras, combinando acción clásica, identidad
+          cultural y una estética inspirada en la época.
+        </p>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="game-trailer youtube-thumb" onclick="openVideoModal('I7sJmOoD5hA')">
+          <img
+          src="https://img.youtube.com/vi/I7sJmOoD5hA/hqdefault.jpg"
+          alt="Ver trailer">
+          <span class="play-btn">▶</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Características -->
+  <section class="container game-section">
+    <h2 class="text-center mb-5">Características</h2>
+
+    <div class="game-features">
+      <div class="game-feature">
+        <span>🎮</span>
+        Combate <em>beat ’em up</em> clásico y directo
+      </div>
+
+      <div class="game-feature">
+        <span>⚔️</span>
+        Enfrentamientos intensos contra tropas invasoras
+      </div>
+
+      <div class="game-feature">
+        <span>🏛️</span>
+        Escenarios inspirados en Buenos Aires colonial
+      </div>
+
+      <div class="game-feature">
+        <span>🎵</span>
+        Banda sonora de estilo retro
+      </div>
+
+      <div class="game-feature">
+        <span>📚</span>
+        Contenido histórico integrado al gameplay
+      </div>
+
+      <div class="game-feature">
+        <span>🧑‍🤝‍🧑</span>
+        Cuatro personajes jugables
+      </div>
+    </div>
+  </section>
+
+  <!-- Personajes y enemigos -->
+  <section class="container game-section">
+
+    <!-- Personajes -->
+    <h2 class="text-center mb-4">Personajes</h2>
+
+    <div class="game-characters mb-5">
+      <div class="character-card"
+        onclick="openCharacterModal(this)"
+        data-name="Apolinario Gonzales (Marinero)"
+        data-img="../img/apolinario.png"
+        data-desc="Es un marinero rudo del Río de la Plata, curtido por los vientos del mar y las tormentas de la invasión. 
+        Su fuerza y determinación lo convierten en un luchador implacable.">
+
+        <div class="character-image">
+          <img src="../img/apolinario.png" alt="Apolinario">
+        </div>
+
+        <h4>Apolinario</h4>
+      </div>
+
+      <div class="character-card"
+        onclick="openCharacterModal(this)"
+        data-name="Ciro Castro (Moreno)"
+        data-img="../img/ciro.png"
+        data-desc="Joven afrodescendiente, hábil y veloz, criado en las calles de Buenos Aires, pertenece a un rango bajo de los militares, forma parte de los Pardos/Morenos. 
+        Su agilidad lo convierte en el más rápido de los luchadores.">
+
+        <div class="character-image">
+          <img src="../img/ciro.png" alt="Ciro">
+        </div>
+
+        <h4>Ciro</h4>
+      </div>
+
+      <div class="character-card"
+        onclick="openCharacterModal(this)"
+        data-name="Amancio Fernandez (Cazador Correntino)"
+        data-img="../img/amancio.png"
+        data-desc="Es un cazador proveniente de las tierras correntinas, acostumbrado a sobrevivir en la selva y en el monte. 
+        Fuerte y astuto, es un maestro en la lucha cuerpo a cuerpo.">
+
+        <div class="character-image">
+          <img src="../img/amancio.png" alt="Amancio">
+        </div>
+
+        <h4>Amancio</h4>
+      </div>
+
+      <div class="character-card"
+        onclick="openCharacterModal(this)"
+        data-name="Desiderio Martinez (Artillero)"
+        data-img="../img/desiderio.png"
+        data-desc="Es un militar de bajo rango que estaba en Quilmes cuando llegaron los ingleses, sobreviviendo gracias al sacrificio de sus compañeros, 
+        respondió al llamado del Nuevo gobernador Liniers para recuperar Buenos Aires, capital del Virreinato del Río de la Plata.">
+
+        <div class="character-image">
+          <img src="../img/desiderio.png" alt="Desiderio">
+        </div>
+
+        <h4>Desiderio</h4>
+      </div>
+    </div>
+
+    <!-- ENEMIGOS -->
+    <h2 class="text-center mb-4">Enemigos</h2>
+
+    <div class="game-characters enemies">
+      <div class="character-card"
+        onclick="openCharacterModal(this)"
+        data-name="Jefe Pirata"
+        data-img="../img/jefePirata.png"
+        data-desc="Un despiadado corsario al servicio de la corona británica, con cicatrices que narran décadas de pillaje en los mares.">
+        <img src="../img/jefePirata.png" alt="Jefe Pirata">
+        <h4>Jefe Pirata</h4>
+      </div>
+
+      <div class="character-card"
+        onclick="openCharacterModal(this)"
+        data-name="Almirante Inglés"
+        data-img="../img/almiranteIngles.png"
+        data-desc="Un despiadado almirante de la marina de la corona británica, con deseos de invadir las costas argentinas.">
+        <img src="../img/almiranteIngles.png" alt="Almirante Inglés">
+        <h4>Almirante Inglés</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Capturas -->
+  <section class="container game-section">
+    <h2 class="text-center mb-5">Capturas</h2>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <img src="../img/captura1.png"
+        class="game-screen"
+        alt="Captura 1"
+        onclick="openImageModal(this)">
+      </div>
+      <div class="col-md-4">
+        <img src="../img/captura2.png"
+        class="game-screen"
+        alt="Captura 2"
+        onclick="openImageModal(this)">
+      </div>
+      <div class="col-md-4">
+        <img src="../img/captura3.png"
+        class="game-screen"
+        alt="Captura 3"
+        onclick="openImageModal(this)">
+      </div>
+      <div class="col-md-4">
+        <img src="../img/captura4.png"
+        class="game-screen"
+        alt="Captura 4"
+        onclick="openImageModal(this)">
+      </div>
+      <div class="col-md-4">
+        <img src="../img/captura5.png"
+        class="game-screen"
+        alt="Captura 5"
+        onclick="openImageModal(this)">
+      </div>
+    </div>
+  </section>
+
+  <!-- Estado del proyecto -->
+  <section class="container game-section text-center">
+    <h2 class="mb-3">Estado del proyecto</h2>
+    <p>🛠️ Publicado — actualizaciones futuras</p>
+  </section>
+
+  <!-- Itch.io -->
+  <section class="container game-section text-center">
+    <a href="https://codesigngames.itch.io/defensores-de-la-patria"
+      class="btn btn-outline-info btn-lg itch-btn"
+      target="_blank"
+      rel="noopener noreferrer">
+      ▶️ Ver en itch.io
+    </a>
+  </section>
+
+  <!-- Volver -->
+  <a href="../index.html"
+    class="btn btn-outline-info btn-lg itch-btn d-block mx-auto mb-5"
+    style="max-width:220px">
+    ← Volver al inicio
+  </a>
+
+  <!-- Modal personaje / enemigo -->
+  <div id="characterModal" class="character-modal">
+    <div class="character-modal-content">
+      <span class="character-close">&times;</span>
+
+      <img id="characterImage" src="" alt="">
+      <h3 id="characterName"></h3>
+      <p id="characterDescription"></p>
+    </div>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="game-footer">
+  <div class="game-footer-content">
+    <p>2026 Codesign Games</p>
+  </div>
+</footer>
+
+<script src="../effects.js"></script>
+</body>
+</html>
